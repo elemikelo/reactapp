@@ -2,7 +2,9 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const cssModules = 'modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base65:5]'
+const cssModules = 'modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]'
+
+
 
 module.exports = {
     resolve: {
@@ -17,20 +19,30 @@ module.exports = {
     },
 
     module: {
-        loaders: [
-            { test: /(\.js|jsx)$/, exclude: /node_modules/, loaders: ['babel'] },
-            { test: /\.css$/, loader: `style-loader!css-loader?${cssModules}`}
+        loaders: [{
+                test: /(\.js|jsx)$/,
+                exclude: /node_modules/,
+                loaders: ['babel']
+            },
+            {
+                test: /\.css$/,
+                loader: `style-loader!css-loader?${cssModules}`
+            }
         ]
     },
 
     devServer: {
-        host: '0.0.0.0', 
+        host: '0.0.0.0',
         port: 8080,
         inLine: true
     },
-    
+
     plugins: [
-        new HtmlWebpackPlugin({ template: './src/assets/index.html'}),
-        new ExtractTextPlugin({ filename: 'style.css', disable: false,  allChunks: true })
+        new HtmlWebpackPlugin({
+            template: './src/assets/index.html'
+        }),
+        new ExtractTextPlugin('style.css', {
+            allChunks: true
+        })
     ]
 }

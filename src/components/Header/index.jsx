@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import styles from './header.css'
 
 class Header extends Component {
-    render(){
+    render() {
         return (
-            <header className="{styles.root}">
-                <h1 className="{styles.logo}">ReactApp</h1>
+            <header className={styles.root}>
+                <h1 className={styles.logo}>ReactApp</h1>
             </header>
         )
     }

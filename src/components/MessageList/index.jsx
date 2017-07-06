@@ -13,7 +13,7 @@ const propTypes = {
 function MessageList({ messages, onRetweet, onFavorite, onReplyTweet }) {
   return (
     <div className={styles.root}>
-      {this.props.messages.map(msg => {
+      {messages.map(msg => {
         return (
           <Message
             key={msg.id}
@@ -24,9 +24,9 @@ function MessageList({ messages, onRetweet, onFavorite, onReplyTweet }) {
             date={msg.date}
             numRetweets={msg.retweets}
             numFavorites={msg.favorites}
-            onRetweet={() => this.props.onRetweet(msg.id)}
-            onFavorite={() => this.props.onFavorite(msg.id)}
-            onReplyTweet={() => this.props.onReplyTweet(msg.id, msg.username)}
+            onRetweet={() => onRetweet(msg.id)}
+            onFavorite={() => onFavorite(msg.id)}
+            onReplyTweet={() => onReplyTweet(msg.id, msg.username)}
           />
         )
       }).reverse()}

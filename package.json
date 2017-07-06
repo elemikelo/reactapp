@@ -4,6 +4,7 @@
   "description": "clon de twitter con React",
   "main": "/build/app.js",
   "scripts": {
+    "production": "webpack -p",
     "build": "webpack --colors",
     "serve": "webpack-dev-server --content-base build/ --colors --progress",
     "start": "npm run build && npm run serve"

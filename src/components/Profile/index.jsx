@@ -1,12 +1,20 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 import styles from './profile.css'
 
+const propTypes = {
+  picture: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  emailAddress: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired
+}
+
 class Profile extends Component {
-  
-  render () {
+
+  render() {
     return (
       <div className={styles.root}>
-        <img  className={styles.avatar} src={this.props.picture} alt=""/>
+        <img className={styles.avatar} src={this.props.picture} alt="" />
         <span className={styles.name}>{this.props.displayName}</span>
         <ul className={styles.data}>
           <li>
@@ -20,8 +28,10 @@ class Profile extends Component {
           </li>
         </ul>
       </div>
-    )  
+    )
   }
 }
+
+Profile.propTypes = propTypes
 
 export default Profile

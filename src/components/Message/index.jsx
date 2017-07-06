@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import moment from 'moment'
 import styles from './Message.css'
+
 
 class Message extends Component {
   constructor(props) {
@@ -32,13 +34,16 @@ class Message extends Component {
   render() {
 
     let dateFormat = moment(this.props.date).fromNow()
+    let userLink = `/user/${this.props.username}`
 
     return (
       <div className={styles.root}>
         <div className={styles.user}>
-          <figure>
-            <img className={styles.avatar} src={this.props.picture} />
-          </figure>
+          <Link to={userLink}>
+            <figure>
+              <img className={styles.avatar} src={this.props.picture} />
+            </figure>
+          </Link>
           <span className={styles.displayName}>{this.props.displayName}</span>
           <span className={styles.username}>{this.props.username}</span>
           <span className={styles.date}>{dateFormat}</span>
@@ -46,9 +51,11 @@ class Message extends Component {
         <h3>{this.props.text}</h3>
         <div
           className={styles.buttons}
-          onClick={this.props.onReplyTweet}
         >
-          <div className={styles.icon}>
+          <div
+            onClick={this.props.onReplyTweet}
+            className={styles.icon}
+          >
             <span className='fa fa-reply'></span></div>
           <div
             className={(this.state.pressRetweet) ? styles.rtGreen : ''}
